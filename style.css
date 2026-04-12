@@ -79,7 +79,7 @@ body {
 
 .about-image {
   float: right;
-  width: 22%;
+  width: 50%;
   max-width: 280px;
   margin: 10px 0 20px 30px;
   border: 3px solid #4fc3b3;
@@ -87,6 +87,10 @@ body {
   box-sizing: border-box;
 }
 
+.highlight-text {
+  font-weight: bold;
+  color: #7fc9ff;
+}
 .about-page::after {
   content: "";
   display: block;
