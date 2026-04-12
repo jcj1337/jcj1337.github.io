@@ -2,7 +2,7 @@ body {
   margin: 0;
   background-color: #0f1b2d;
   color: #e8f4fa;
-  font-family: Arial, sans-serif;
+  font-family: Georgia, sans-serif;
 }
 
 .sidebar {
@@ -18,7 +18,7 @@ body {
 
 .sidebar h1 {
   color: #7fd6c2;
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: Georgia, serif;
   font-size: 2rem;
   margin-bottom: 30px;
 }
@@ -50,7 +50,7 @@ body {
 
 .title {
   text-align: center;
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: Georgia, serif;
   font-size: 3.5rem;
   margin-top: 0;
   margin-bottom: 30px;
@@ -66,7 +66,7 @@ body {
 }
 
 .about-section h2 {
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: Georgia, serif;
   font-size: 2.2rem;
   margin-top: 50px;
   margin-bottom: 16px;
@@ -79,7 +79,7 @@ body {
 
 .about-image {
   float: right;
-  width: 50%;
+  width: 100%;
   max-width: 280px;
   margin: 10px 0 20px 30px;
   border: 3px solid #4fc3b3;
