@@ -1,0 +1,11 @@
+.nav-download {
+  display: block;
+  text-decoration: none;
+  color: #1a1a1a;
+  background-color: #efe2b8;
+  padding: 12px;
+  margin-bottom: 18px;
+  text-align: center;
+  font-size: 1.2rem;
+  border-radius: 4px;
+}
