@@ -125,10 +125,10 @@ ol li {
 }
 
 .profile-image {
-  width: 220px;
+  width: 60px;
   max-width: 28%;
   height: auto;
-  border: 3px solid #4fc3b3;
+  border: 3px solid #4fc3b3;g
   border-radius: 10px;
   box-sizing: border-box;
   flex-shrink: 0;
