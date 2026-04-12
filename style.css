@@ -1,7 +1,7 @@
 body {
   margin: 0;
-  background-color: #1f2438;
-  color: #f5f1e8;
+  background-color: #0f1b2d;
+  color: #e8f4fa;
   font-family: Arial, sans-serif;
 }
 
@@ -11,13 +11,13 @@ body {
   top: 0;
   width: 220px;
   height: 100vh;
-  background-color: #c7b08a;
+  background-color: #18324a;
   padding: 30px 20px;
   box-sizing: border-box;
 }
 
 .sidebar h1 {
-  color: #5a1020;
+  color: #7fd6c2;
   font-family: Georgia, "Times New Roman", serif;
   font-size: 2rem;
   margin-bottom: 30px;
@@ -26,19 +26,26 @@ body {
 .sidebar a {
   display: block;
   text-decoration: none;
-  color: #1a1a1a;
-  background-color: #efe2b8;
+  color: #102030;
+  background-color: #cfe8f3;
   padding: 12px;
   margin-bottom: 18px;
   text-align: center;
   font-size: 1.2rem;
-  border-radius: 4px;
+  border-radius: 6px;
+  transition: 0.2s ease;
+}
+
+.sidebar a:hover {
+  background-color: #a9dccc;
 }
 
 .content {
   margin-left: 260px;
-  padding: 30px 40px;
-  max-width: 1000px;
+  padding: 40px 50px;
+  max-width: 950px;
+  font-size: 1.15rem;
+  line-height: 1.7;
 }
 
 .title {
@@ -46,17 +53,62 @@ body {
   font-family: Georgia, "Times New Roman", serif;
   font-size: 3.5rem;
   margin-top: 0;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
+  color: #dff7ff;
 }
 
-.spacer {
-  margin-top: 30px;
+.intro {
+  margin-bottom: 28px;
+}
+
+.about-section {
+  margin-bottom: 50px;
+}
+
+.about-section h2 {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 2.2rem;
+  margin-top: 50px;
+  margin-bottom: 16px;
+  color: #7fd6c2;
+}
+
+.about-section p {
+  margin-bottom: 22px;
+}
+
+.about-image {
+  float: right;
+  width: 22%;
+  max-width: 280px;
+  margin: 10px 0 20px 30px;
+  border: 3px solid #4fc3b3;
+  border-radius: 6px;
+  box-sizing: border-box;
+}
+
+.about-page::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+ol {
+  margin-top: 20px;
+  margin-bottom: 28px;
+  padding-left: 32px;
+}
+
+ol li {
+  margin-bottom: 18px;
+  line-height: 1.6;
 }
 
 .content a {
-  color: #f2b6c6;
+  color: #8ee6d4;
 }
 
 .content a:hover {
+  color: #c8fff4;
   text-decoration: underline;
 }
