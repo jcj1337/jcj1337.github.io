@@ -61,20 +61,27 @@ body {
   margin-bottom: 28px;
 }
 
-.about-section {
-  margin-bottom: 50px;
+/* ---------- Content cards ---------- */
+
+.card {
+  background-color: #16293f;
+  border: 1px solid #24405c;
+  border-radius: 8px;
+  padding: 28px 32px;
+  margin-bottom: 48px;
+  display: flow-root;
+  transition: 0.2s ease;
 }
 
-.about-section h2,
-.project-header h2 {
+.card:hover {
+  border-color: #4fc3b3;
+}
+
+.card h2 {
   font-family: Georgia, serif;
   font-size: 2.2rem;
+  margin: 0 0 16px;
   color: #7fd6c2;
-}
-
-.about-section h2 {
-  margin-top: 50px;
-  margin-bottom: 16px;
 }
 
 .about-section p {
@@ -125,7 +132,6 @@ ol li {
   display: flex;
   align-items: flex-start;
   gap: 32px;
-  margin-bottom: 40px;
 }
 
 .profile-image {
@@ -140,20 +146,11 @@ ol li {
   flex: 1;
 }
 
+.home-text p:first-child {
+  margin-top: 0;
+}
+
 /* ---------- Projects page ---------- */
-
-.project-card {
-  background-color: #16293f;
-  border: 1px solid #24405c;
-  border-radius: 8px;
-  padding: 28px 32px;
-  margin-bottom: 48px;
-  transition: 0.2s ease;
-}
-
-.project-card:hover {
-  border-color: #4fc3b3;
-}
 
 .project-header h2 {
   margin: 0 0 10px;
@@ -292,12 +289,11 @@ ol li {
     margin: 10px 0 24px 0;
   }
 
-  .about-section h2,
-  .project-header h2 {
+  .card h2 {
     font-size: 1.8rem;
   }
 
-  .project-card {
+  .card {
     padding: 22px 20px;
   }
 }
