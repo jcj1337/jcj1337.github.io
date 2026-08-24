@@ -65,12 +65,16 @@ body {
   margin-bottom: 50px;
 }
 
-.about-section h2 {
+.about-section h2,
+.project-header h2 {
   font-family: Georgia, serif;
   font-size: 2.2rem;
+  color: #7fd6c2;
+}
+
+.about-section h2 {
   margin-top: 50px;
   margin-bottom: 16px;
-  color: #7fd6c2;
 }
 
 .about-section p {
@@ -152,10 +156,13 @@ ol li {
 }
 
 .project-header h2 {
-  font-family: Georgia, serif;
-  font-size: 2.2rem;
   margin: 0 0 10px;
-  color: #7fd6c2;
+}
+
+/* secondary / muted text - subdued from the #e8f4fa body color */
+.project-tagline,
+.figure-caption {
+  color: #8aa7bd;
 }
 
 .project-tagline {
@@ -163,7 +170,6 @@ ol li {
   padding-bottom: 20px;
   border-bottom: 1px solid #24405c;
   font-style: italic;
-  color: #b6cfdd;
 }
 
 .project-body {
@@ -184,12 +190,12 @@ ol li {
   box-sizing: border-box;
 }
 
-.project-media figcaption {
-  margin-top: 10px;
+.figure-caption {
+  margin-top: 14px;
   font-size: 0.85rem;
   line-height: 1.4;
+  font-style: italic;
   text-align: center;
-  color: #8aa7bd;
 }
 
 .project-text p {
@@ -286,15 +292,12 @@ ol li {
     margin: 10px 0 24px 0;
   }
 
-  .about-section h2 {
+  .about-section h2,
+  .project-header h2 {
     font-size: 1.8rem;
   }
 
   .project-card {
     padding: 22px 20px;
-  }
-
-  .project-header h2 {
-    font-size: 1.7rem;
   }
 }
