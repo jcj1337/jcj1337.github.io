@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projects | Jet Chang</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="sidebar">
+    <h1>Navigation</h1>
+    <a href="index.html">Home</a>
+    <a href="about.html">About Me</a>
+    <a href="projects.html">Projects</a>
+    <a href="resume.pdf" download>Resume</a>
+  </div>
+
+  <main class="content projects-page">
+    <h1 class="title">Projects</h1>
+
+    <p class="intro">
+      A few of the things I've been building lately. Most of them start the same way &mdash; I run into
+      something I wish existed and (attempt) to make it myself.
+    </p>
+
+    <!-- ============ Project 1: League of Legends Win Probability ============ -->
+    <section class="project-card">
+      <header class="project-header">
+        <h2>League of Legends Pre-Game Win Probability Estimator</h2>
+        <p class="project-tagline">
+          A model that estimates each team's chance of winning before the game even loads in.
+        </p>
+      </header>
+
+      <div class="project-body">
+        <figure class="project-media">
+          <img src="images/lol-model-architecture.png" alt="Diagram of the model architecture: champion, team, role, subclass and scaling embeddings are summed per pick, passed through a transformer encoder, then concatenated with numeric pre-game features" />
+          <figcaption>Model architecture.</figcaption>
+        </figure>
+
+        <div class="project-text">
+          <p>
+            Champion select ends, the loading screen comes up, and everyone in the lobby has already made up
+            their mind about whether the game is winnable. I wanted to know how much of that gut feeling is
+            actually justified &mdash; so I built a model that looks at the ten players and the two team
+            compositions, and assigns the win probabilities before any gameplay.
+          </p>
+
+          <p>
+            The data comes from Diamond+ ranked games across several regions, pulled through the Riot Games API.
+            The tricky part is that a draft isn't just ten independent picks &mdash; champions matter because of
+            how they fit together, so the model learns its own sense of each champion's identity (its role, its
+            style, scaling, etc.) and reads the draft as a whole rather than as a list. That gets combined with
+            what's known about the players themselves (e.g. winrate) to produce the final number.
+          </p>
+
+          <p>
+            For proper practice and evaluation I also compared the transformer to simpler baseline models.
+          </p>
+
+          <ul class="tech-tags">
+            <li>Python</li>
+            <li>PyTorch</li>
+            <li>Pandas</li>
+            <li>NumPy</li>
+            <li>scikit-learn</li>
+            <li>XGBoost</li>
+            <li>Riot API</li>
+            <li>Machine Learning</li>
+          </ul>
+
+          <div class="project-links">
+            <a class="project-button" href="https://github.com/jcj1337/lol_draft_project" target="_blank">GitHub Repo</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ Project 2: Pokemon TCG Price App ============ -->
+    <section class="project-card">
+      <header class="project-header">
+        <h2>Pok&eacute;mon App</h2>
+        <p class="project-tagline">
+          A price tracking app for trading cards, meant to be a replacement to Collectr.
+        </p>
+      </header>
+
+      <div class="project-body">
+        <figure class="project-media">
+          <img src="images/pokemon-card-view.png" alt="Card detail view for Umbreon VMAX showing the TCGPlayer market price, current low, mid and high listings, and a market analysis section" />
+          <figcaption>Card detail view, with market price and current listings.</figcaption>
+        </figure>
+
+        <div class="project-text">
+          <p>
+            I got into the hobby this summer, and after vending at a few events I realized that the current
+            &ldquo;standard,&rdquo; Collectr, is&hellip; unsatisfactory. I noticed that with most cards, to make sure I had a
+            fair comp, I would first check Collectr, then TCGPlayer, then eBay last sold. And then an epiphany&hellip;
+            what is even the point of step 1 here if it's so unreliable that I feel the need to check two other
+            sources? And so me and my best friend (Claude) tapped in.
+          </p>
+
+          <p>
+            The app right now is still most definitely a WIP, but I think we've made some good progress.
+            An issue I think is at this point unavoidable is that the app is realistically unscalable. Recently
+            eBay started gatekeeping their API, and so I have some serious issues when it comes to scraping for
+            the last sold prices. With that being said, I should still be able to build a prototype, and at this
+            point my goal is to get a working version for personal use. I'd imagine this should at least be feasible.
+          </p>
+
+          <ul class="project-highlights">
+            <li>Card search, down to the set, collector number, and rarity.</li>
+            <li>TCGPlayer market price shown next to what sellers are currently asking.</li>
+            <li>A buy price built from recent eBay sales, grouped so you're only comparing like for like &mdash; same condition or grade, same edition, same printing.</li>
+          </ul>
+
+          <!-- Tech stack - fill in and uncomment:
+          <ul class="tech-tags">
+            <li>Tech</li>
+          </ul>
+          -->
+
+          <!-- Repo / demo - add the URLs and uncomment:
+          <div class="project-links">
+            <a class="project-button" href="URL" target="_blank">GitHub Repo</a>
+            <a class="project-button" href="URL" target="_blank">Live Demo</a>
+          </div>
+          -->
+        </div>
+      </div>
+    </section>
+
+  </main>
+</body>
+</html>

@@ -135,3 +135,166 @@ ol li {
 .home-text {
   flex: 1;
 }
+
+/* ---------- Projects page ---------- */
+
+.project-card {
+  background-color: #16293f;
+  border: 1px solid #24405c;
+  border-radius: 8px;
+  padding: 28px 32px;
+  margin-bottom: 48px;
+  transition: 0.2s ease;
+}
+
+.project-card:hover {
+  border-color: #4fc3b3;
+}
+
+.project-header h2 {
+  font-family: Georgia, serif;
+  font-size: 2.2rem;
+  margin: 0 0 10px;
+  color: #7fd6c2;
+}
+
+.project-tagline {
+  margin: 0 0 22px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #24405c;
+  font-style: italic;
+  color: #b6cfdd;
+}
+
+.project-body {
+  display: block;
+}
+
+.project-media {
+  max-width: 720px;
+  margin: 0 auto 28px;
+}
+
+.project-media img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 3px solid #4fc3b3;
+  border-radius: 6px;
+  box-sizing: border-box;
+}
+
+.project-media figcaption {
+  margin-top: 10px;
+  font-size: 0.85rem;
+  line-height: 1.4;
+  text-align: center;
+  color: #8aa7bd;
+}
+
+.project-text p {
+  margin-top: 0;
+  margin-bottom: 22px;
+}
+
+.project-highlights {
+  margin: 0 0 22px;
+  padding-left: 24px;
+}
+
+.project-highlights li {
+  margin-bottom: 8px;
+}
+
+.tech-tags {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0 0 24px;
+  padding: 0;
+}
+
+.tech-tags li {
+  background-color: #203c56;
+  border: 1px solid #2f5f7a;
+  border-radius: 999px;
+  padding: 4px 14px;
+  font-size: 0.9rem;
+  color: #cfe8f3;
+}
+
+.project-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.content a.project-button {
+  display: inline-block;
+  text-decoration: none;
+  color: #102030;
+  background-color: #cfe8f3;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: 0.2s ease;
+}
+
+.content a.project-button:hover {
+  background-color: #a9dccc;
+  text-decoration: none;
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 800px) {
+  .sidebar {
+    position: static;
+    width: 100%;
+    height: auto;
+    padding: 20px;
+  }
+
+  .sidebar h1 {
+    font-size: 1.6rem;
+    margin-bottom: 16px;
+  }
+
+  .sidebar a {
+    margin-bottom: 10px;
+  }
+
+  .content {
+    margin-left: 0;
+    padding: 30px 20px;
+    font-size: 1.05rem;
+  }
+
+  .title {
+    font-size: 2.4rem;
+  }
+
+  .home-intro {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .about-image {
+    float: none;
+    width: 100%;
+    margin: 10px 0 24px 0;
+  }
+
+  .about-section h2 {
+    font-size: 1.8rem;
+  }
+
+  .project-card {
+    padding: 22px 20px;
+  }
+
+  .project-header h2 {
+    font-size: 1.7rem;
+  }
+}
