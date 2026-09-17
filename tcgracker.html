@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TCGracker | Jet Chang</title>
+  <meta name="description" content="TCGracker: a trading card market intelligence platform with hybrid retrieval, explainable buy prices and a Claude tool-calling assistant. A case study." />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="sidebar">
+    <h1>Navigation</h1>
+    <a href="index.html">Home</a>
+    <a href="about.html">About Me</a>
+    <a href="projects.html" class="active">Projects</a>
+    <a href="resume.pdf" target="_blank" rel="noopener">Resume</a>
+  </div>
+
+  <main class="content case-study">
+
+    <p class="breadcrumb"><a href="projects.html">&larr; Back to Projects</a></p>
+
+    <!-- ============ 1. Hero / Overview ============ -->
+    <header class="case-hero">
+      <h1 class="title case-title">TCGracker</h1>
+      <p class="case-subtitle">Trading Card Market Intelligence Platform</p>
+
+      <p class="case-lede">
+        A full-stack app for Pok&eacute;mon card pricing. It syncs a 21,000-card catalog, links every card to
+        the exact TCGplayer version it trades as, stores price history and eBay sales, and publishes an explainable
+        &ldquo;Recommended Buy&rdquo; price, or says plainly when the evidence is too thin. On top sits a
+        Claude assistant whose every figure is re-checked by code before you see it. Around 60K lines of code. Pretty cool. 
+      </p>
+
+      <ul class="tech-tags">
+        <li>TypeScript</li>
+        <li>Next.js </li>
+        <li>React </li>
+        <li>PostgreSQL (PGlite)</li>
+        <li>Drizzle ORM</li>
+        <li>Tailwind CSS</li>
+        <li>MiniLM embeddings</li>
+        <li>BM25</li>
+        <li>Claude SDK</li>
+        <li>TCG APIs</li>
+      </ul>
+
+      <p class="private-note">
+        <span class="badge">Private repository</span>
+        The implementation lives in a private repo since I may scale it to the public in the future. 
+        I still want to show off what we have so far though so here lies a case study ^_^
+      </p>
+    </header>
+
+    <section class="card">
+      <figure class="project-media wide">
+        <img src="images/tcgracker/card-page.png" alt="TCGracker card page for Umbreon VMAX (Evolving Skies 215/203): the TCGplayer market price, a Recommended Buy of at or below $1,660 with the market reference beside it, comparable-sale tabs for raw and graded copies, and a deal checker" />
+        <figcaption class="figure-caption">The card page: market price, comparable eBay sales grouped by condition and grade, and a Recommended Buy price. Of course this is meant for a vendor, do not 
+          go around asking people to sell you their moonbreon at roughly 80%. That would make you a bad person. Don't be a bad person.
+        </figcaption>
+      </figure>
+    </section>
+
+    <!-- ============ 2. Product overview ============ -->
+    <section class="card">
+      <h2>What it does</h2>
+      <div class="feature-grid">
+        <div class="feature">
+          <h3>Find the exact card and version</h3>
+          <p>Messy queries like &ldquo;moonbreon alt evo skies 215&rdquo; (or some similar variation) resolve to a card and its market versions. When the query leaves something undecided, the app says so and prompts the user instead of guessing.</p>
+        </div>
+        <div class="feature">
+          <h3>Aggregate pricing and history</h3>
+          <p>TCGplayer market prices are the default for every printing a card trades as, with daily price history stored as observations.</p>
+        </div>
+        <div class="feature">
+          <h3>Classify and compare sales</h3>
+          <p>eBay sold listings are grouped into comparable markets: same grade, same edition, same printing, same language. Lots, proxies and wrong-card listings are filtered out for accuracy.</p>
+        </div>
+        <div class="feature">
+          <h3>Explainable Recommended Buy</h3>
+          <p>A buy price below market reference to account for risk, with a margin built from named, said risks. If the comps disagree or are too few, it refuses with a reason.</p>
+        </div>
+        <div class="feature">
+          <h3>Ask TCGracker</h3>
+          <p>A Claude assistant that answers by calling the app&rsquo;s own services as tools. Every figure it states is re-checked by code, and each fact is traced back to the tool result it came from.</p>
+        </div>
+        <div class="feature">
+          <h3>Vendor inventory</h3>
+          <p>Record purchases by version, quantity, price paid and condition. See cost basis, market value and unrealized gain or loss per holding.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ Screenshots ============ -->
+    <section class="card">
+      <h2>Demo</h2>
+      <div class="shot-grid">
+        <figure class="project-media">
+          <img src="images/tcgracker/search-results.png" alt="Search results for 'charizard base set 4/102': Base Set Charizard first at $852.43 labelled Holofoil, with a line noting three versions: Holofoil, Shadowless Unlimited Holofoil and Shadowless 1st Edition Holofoil" />
+          <figcaption class="figure-caption">Search. The query named the card but not which of its three versions, so the result says exactly that.</figcaption>
+        </figure>
+        <figure class="project-media">
+          <img src="images/tcgracker/card-versions.png" alt="Card page for Base Set Charizard listing three separately priced versions: Shadowless 1st Edition Holofoil, Shadowless Unlimited Holofoil and Holofoil" />
+          <figcaption class="figure-caption">A version, not a card, has a price. Base Set Charizard is three markets, and the page never picks one silently.</figcaption>
+        </figure>
+      </div>
+
+      <figure class="project-media wide">
+        <img src="images/tcgracker/inventory.png" alt="Inventory page showing totals for cost, market value and unrealized gain, and a list of holdings with quantity, paid, market value and gain per holding" />
+        <figcaption class="figure-caption">Inventory. Purchases are stored; value is computed on read from the same price the card page shows. Graded and played copies are listed as unpriced rather than given a made-up number. Demo purchases shown.</figcaption>
+      </figure>
+
+      <div class="shot-grid">
+        <figure class="project-media">
+          <img src="images/tcgracker/price-history.png" alt="Price history chart for Umbreon VMAX Holofoil over one year, with 1M, 3M, 6M, 1Y and ALL range buttons" />
+          <figcaption class="figure-caption">Price history from stored daily observations.</figcaption>
+        </figure>
+        <figure class="project-media placeholder">
+          <div class="placeholder-box">
+            <p class="placeholder-title">Screenshot pending: Ask TCGracker</p>
+            <p>The assistant is switched off unless a paid model call is deliberately allowed, so this capture is left for a live session.</p>
+          </div>
+          <figcaption class="figure-caption">Ask TCGracker: a grounded, tool-calling assistant over the same services the pages use.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ============ 4. Headline metrics ============ -->
+    <section class="card">
+      <h2>By the numbers</h2>
+      <div class="metric-grid">
+        <div class="metric">
+          <p class="metric-value">35K+</p>
+          <p class="metric-label">card market versions indexed</p>
+        </div>
+        <div class="metric">
+          <p class="metric-value">232K+</p>
+          <p class="metric-label">historical price observations stored</p>
+        </div>
+        <div class="metric">
+          <p class="metric-value">99.4%</p>
+          <p class="metric-label">correct first result on 823 held-out search queries</p>
+        </div>
+        <div class="metric">
+          <p class="metric-value">56%</p>
+          <p class="metric-label">faster pipeline re-runs by skipping work already done</p>
+        </div>
+      </div>
+      <p class="metric-footnote">
+        Measured in the project&rsquo;s own evaluation sets on one machine. The 99.4% is Recall@1 for the hybrid retriever; embeddings alone scored 75.6% on the same split. The 56% compares a first 12-step build (7.8 min) with an immediate re-run (3.4 min).
+      </p>
+    </section>
+
+    <!-- ============ 5. Architecture ============ -->
+    <section class="card">
+      <h2>How it fits together</h2>
+      <p>Scripts write and the app reads.</p>
+
+      <div class="arch-flow" role="img" aria-label="Data flow: TCGdex, TCGCSV and marketplace data, to ingestion and normalization, to PostgreSQL, to retrieval and pricing systems, to the Claude tool-calling assistant, to the Next.js frontend">
+        <div class="arch-node">
+          <p class="arch-title">Sources</p>
+          <p class="arch-desc">TCGdex for catalog, TCGCSV and ebay last sold listings for pricing</p>
+        </div>
+        <div class="arch-arrow" aria-hidden="true"></div>
+        <div class="arch-node">
+          <p class="arch-title">Ingestion</p>
+          <p class="arch-desc">Pull the data in, link to relevant listings, then normalization and classification</p>
+        </div>
+        <div class="arch-arrow" aria-hidden="true"></div>
+        <div class="arch-node">
+          <p class="arch-title">PostgreSQL</p>
+          <p class="arch-desc">Catalog, printings, price history, sales, versioned derived tables</p>
+        </div>
+        <div class="arch-arrow" aria-hidden="true"></div>
+        <div class="arch-node">
+          <p class="arch-title">Retrieval &amp; pricing</p>
+          <p class="arch-desc">MiniLM + BM25 search, listing resolver, Recommended Buy engine</p>
+        </div>
+        <div class="arch-arrow" aria-hidden="true"></div>
+        <div class="arch-node">
+          <p class="arch-title">Claude assistant</p>
+          <p class="arch-desc">Tool calls over the read layer and grounding check</p>
+        </div>
+        <div class="arch-arrow" aria-hidden="true"></div>
+        <div class="arch-node">
+          <p class="arch-title">Next.js frontend</p>
+          <p class="arch-desc">Search, card pages, sets, inventory, Ask feature. Pretty self explanatory</p>
+        </div>
+      </div>
+
+      <ul class="project-highlights arch-notes">
+        <li>Raw observations are kept as received. Derived rows (links, versions, classifications, price snapshots, the search index) are labelled with a hash of the rule that produced them, so a rule change adds rows instead of rewriting history.</li>
+        <li>Purchases live in a separate database that no market-data script can reach, because the market data is rebuildable and purchases are not.</li>
+        <li>32 automated test suites.</li>
+      </ul>
+    </section>
+
+    <!-- ============ 3. AI / retrieval architecture ============ -->
+    <section class="card">
+      <h2>Retrieval and the assistant</h2>
+
+      <div class="two-col">
+        <div>
+          <h3>Search: hybrid retrieval, deterministic ranking</h3>
+          <ol class="pipeline">
+            <li><strong>Parse</strong> the query for card number, printed total, set, edition and finish.</li>
+            <li><strong>MiniLM embeddings</strong> propose semantic candidates.</li>
+            <li><strong>BM25</strong> proposes lexical candidates; the two pools are merged.</li>
+            <li><strong>Deterministic rerank</strong>: named evidence promotes, demotes or contradicts each candidate.</li>
+            <li><strong>Report</strong> a status: resolved, ambiguous, under-specified or no match, with the causes.</li>
+          </ol>
+        </div>
+        <div>
+          <h3>Ask: tool calling with verification</h3>
+          <ol class="pipeline">
+            <li><strong>Claude chooses tools</strong> from eleven read-only wrappers over the app&rsquo;s own services (search, price, history, comparable sales, deal check, currency).</li>
+            <li><strong>Tools return stored facts</strong>. No free-text corpus, no document chunks.</li>
+            <li><strong>A grounding check</strong> re-reads the draft against the tool results: money to the cent, version words from a closed vocabulary, ids, currency conversions with their rate and date.</li>
+            <li><strong>One correction</strong> is allowed; otherwise the facts ship without prose.</li>
+            <li><strong>Provenance</strong> maps each sentence to the results it came from, and the page shows the markers.</li>
+          </ol>
+        </div>
+      </div>
+
+      <p class="callout">
+        I initially considered a traditional RAG approach, but as the system evolved I found this system was a better fit for exact market facts. The final architecture returns the correct result first on 99.4% of held-out queries, very accurate.
+      </p>
+    </section>
+
+    <!-- ============ 6. Technical decisions ============ -->
+    <section class="card">
+      <h2>Decisions worth explaining</h2>
+
+      <div class="decision">
+        <h3>Why search uses two methods instead of one</h3>
+        <p>
+          Keyword search (BM25) is great when you type a card number, and honestly kind of bad when you don't. Embeddings (MiniLM) are the opposite: they get the vibe of &ldquo;moonbreon alt art&rdquo; but can't be trusted to nail the exact card on their own. So I use both and let a set of plain rules decide the final order (does the number match? the set? the edition?). On my held-out test queries, keywords alone got the right card first 98.9% of the time, embeddings alone 75.6%, and both together 99.4%. That last bit of improvement comes almost entirely from queries with no card number, which went from 87.3% to 94.5%. Those are exactly the searches a real person types.
+        </p>
+      </div>
+
+      <div class="decision">
+        <h3>Why the assistant calls functions instead of reading documents</h3>
+        <p>
+          The usual way to hook an LLM up to your data is to chop it into text, find the relevant chunks, and let the model read them (RAG). That works for docs. It doesn't work for &ldquo;what did this exact version sell for on this date,&rdquo; because the answer is a number in a table and any paraphrasing risks getting it slightly wrong, which for pricing is fully wrong. So instead, Claude gets a small set of functions that return the actual rows (search for a card, get its price, list its sales, check a deal), and its only job is to put those results into words. The search engine from above is one of those functions, not the answer itself.
+        </p>
+      </div>
+
+      <div class="decision">
+        <h3>Why I don't trust the model's numbers, even when they're right</h3>
+        <p>
+          Early on the model would round a price, or reuse a figure from an earlier message that was no longer what the tool said. Prompting it harder didn't fix that. So every answer goes through a checker written in normal code: every dollar amount has to match a tool result to the cent, every version name has to be one the tools actually returned, and if the checker isn't satisfied, the model gets one shot at a correction before the app just shows the raw facts with no prose. Not knowing is an allowed answer; making something up is not. On a sealed test of 50 scenarios (drawn once, looked at once), 48 passed with zero made-up numbers, versions or ids getting through. Every paid run is recorded, so re-checking later costs $0. Total spend on the model across the whole project was about $15.50.
+        </p>
+      </div>
+
+      <div class="decision">
+        <h3>Why rebuilding everything is cheap</h3>
+        <p>
+          Setting the app up from nothing is a 12-step process: sync the catalog, link every card to TCGplayer, import sales, compute prices, build the search index, and so on. Every step remembers what it already did, so running it again skips whatever hasn't changed: cards already stored, price groups unchanged, embeddings reused if the card's text is the same. First build from an empty database is 7.8 minutes; a re-run is 3.4. The biggest win was actually a bug: a cascading delete was quietly throwing away all 35K cached embeddings on every rebuild, so fixing it took the index rebuild from 88 seconds to under one. The whole thing runs off free data sources with paid calls forced off, so I can nuke the database and start over without thinking about it.
+        </p>
+      </div>
+    </section>
+
+    <div class="project-links page-end">
+      <a class="project-button" href="projects.html">&larr; Back to Projects</a>
+    </div>
+
+
+    <footer class="site-footer">
+      <a href="mailto:jet.chang@mail.utoronto.ca">jet.chang@mail.utoronto.ca</a>
+      <span aria-hidden="true">&middot;</span>
+      <a href="https://github.com/jcj1337" target="_blank" rel="noopener">github.com/jcj1337</a>
+    </footer>
+  </main>
+</body>
+</html>

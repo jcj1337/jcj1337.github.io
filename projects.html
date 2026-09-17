@@ -11,8 +11,8 @@
     <h1>Navigation</h1>
     <a href="index.html">Home</a>
     <a href="about.html">About Me</a>
-    <a href="projects.html">Projects</a>
-    <a href="resume.pdf" download>Resume</a>
+    <a href="projects.html" class="active">Projects</a>
+    <a href="resume.pdf" target="_blank" rel="noopener">Resume</a>
   </div>
 
   <main class="content projects-page">
@@ -70,16 +70,19 @@
       </div>
     </section>
 
-    <!-- ============ Project 2: Pokemon TCG Price App ============ -->
+    <!-- ============ Project 2: TCGracker ============ -->
     <section class="card">
       <header class="project-header">
-        <h2>Pok&eacute;mon App</h2>
+        <h2>TCGracker</h2>
+        <p class="project-tagline">
+          A trading card market intelligence platform: exact card versions, comparable sales, explainable buy prices, and a Claude assistant that can't make numbers up.
+        </p>
       </header>
 
       <div class="project-body">
         <figure class="project-media">
-          <img src="images/pokemon-card-view.png" alt="Card detail view for Umbreon VMAX showing the TCGPlayer market price, current low, mid and high listings, and a market analysis section" />
-          <figcaption class="figure-caption">Figure 2: Card view for da Moooonbreon as of 8/23/2026</figcaption>
+          <a href="tcgracker.html"><img src="images/tcgracker/card-page.png" alt="TCGracker card page for Umbreon VMAX showing the TCGplayer market price, a Recommended Buy with its market reference, comparable-sale tabs by condition and grade, and a deal checker" /></a>
+          <figcaption class="figure-caption">Figure 2: The card page, with a Recommended Buy built from comparable eBay sales.</figcaption>
         </figure>
 
         <div class="project-text">
@@ -92,17 +95,18 @@
           </p>
 
           <p>
-            The app right now is still most definitely a WIP, but I think we've made some good progress.
-            An issue I think is at this point unavoidable is that the app is realistically unscalable. Recently
-            eBay started gatekeeping their API, and so I have some serious issues when it comes to scraping for
-            the last sold prices. With that being said, I should still be able to build a prototype, and at this
-            point my goal is to get a working version for personal use. I'd imagine this should at least be feasible.
+            What started as a price lookup grew into a full local platform: a 21,000-card catalog linked to the exact
+            TCGplayer version each card trades as, stored price history and eBay sales, a hybrid search engine, an
+            explainable Recommended Buy price, a vendor inventory, and a tool-calling assistant whose answers are
+            verified by code before they're shown. The source is private, so I wrote up the design, the numbers and
+            the screenshots on a dedicated page.
           </p>
 
           <ul class="project-highlights">
-            <li>Card search, down to the set number, and rarity.</li>
-            <li>TCGPlayer market price shown next to what sellers are currently asking.</li>
+            <li>Search that resolves messy queries to a card and its market versions, and says what it couldn't decide.</li>
             <li>A buy price built from recent eBay sales, grouped so you're only comparing categorically the same card, e.g., same condition/grade, same edition, same printing.</li>
+            <li>A Claude assistant over the same data, with a grounding check that re-verifies every figure it states.</li>
+            <li>Inventory tracking: cost basis, market value and unrealized gain/loss per holding.</li>
           </ul>
 
           <ul class="tech-tags">
@@ -111,17 +115,25 @@
             <li>React</li>
             <li>Tailwind CSS</li>
             <li>PostgreSQL</li>
-            <li>LangChain</li>
+            <li>MiniLM + BM25 retrieval</li>
+            <li>Claude tool calling</li>
             <li>Full-Stack Web App</li>
           </ul>
 
           <div class="project-links">
-            <a class="project-button" href="https://github.com/jcj1337/pkmn_app" target="_blank">GitHub Repo</a>
+            <a class="project-button" href="tcgracker.html">Read the case study</a>
+            <span class="private-inline">Implementation repository is private</span>
           </div>
         </div>
       </div>
     </section>
 
+
+    <footer class="site-footer">
+      <a href="mailto:jet.chang@mail.utoronto.ca">jet.chang@mail.utoronto.ca</a>
+      <span aria-hidden="true">&middot;</span>
+      <a href="https://github.com/jcj1337" target="_blank" rel="noopener">github.com/jcj1337</a>
+    </footer>
   </main>
 </body>
 </html>
