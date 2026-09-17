@@ -28,8 +28,7 @@
       <p class="case-lede">
         A full-stack app for Pok&eacute;mon card pricing. It syncs a 21,000-card catalog, links every card to
         the exact TCGplayer version it trades as, stores price history and eBay sales, and publishes an explainable
-        &ldquo;Recommended Buy&rdquo; price, or says plainly when the evidence is too thin. On top sits a
-        Claude assistant whose every figure is re-checked by code before you see it. Around 60K lines of code. Pretty cool. 
+        &ldquo;Recommended Buy&rdquo; price, or says plainly and honestly when theirs not enough evidence to judge off of. 
       </p>
 
       <ul class="tech-tags">
@@ -59,6 +58,45 @@
           go around asking people to sell you their moonbreon at roughly 80%. That would make you a bad person. Don't be a bad person.
         </figcaption>
       </figure>
+    </section>
+
+    <!-- ============ Why ============ -->
+    <section class="card">
+      <h2>Motivation</h2>
+
+      <figure class="section-photo">
+        <img src="images/tcgracker/cardshow.jpg" alt="A busy trading card show in Markham, seen from a balcony: rows of vendor tables with display cases and binders, and a crowd moving between them" />
+        <figcaption class="figure-caption">A GTA card show.</figcaption>
+      </figure>
+
+      <p>
+        I vend at card shows, and pricing a card on the spot is a real decision with my own money behind it.
+        The current industry standard is Collectr, and I noticed while both buying and vending, I would find 
+        myself hitting up tcgplayer, then ebay last sold to comp a cards worth. That left the question,
+        why even use Collectr anyways? All it really did for me was provide an inventory tracking system, but
+        everything it advertises itself as, well, useless or at the very least unpractical (an inventory tracking system
+        alone I figured would be a pretty trivial thing to make, and would outperform the app's bloat). It would 
+        also miss recent eBay sold listings, or show me ones that weren&rsquo;t really the same card.
+        And when it did hand me a number, I had no way to see where that number came from, e.g., the "market price"
+        for a given card would be different from tcgplayer, while also not being transparent with ebay's last sold, 
+        which was extremely confusing (just trust me bro?).
+      </p>
+
+      <p>
+        So my routine became: check Collectr, then TCGplayer, then eBay last sold. Every card, every time. Which
+        eventually raised the obvious question &mdash; why not just cut out step 1?
+      </p>
+
+      <p>
+        TCGracker is my answer. Every figure on screen traces back to the sales behind it. Sales are grouped
+        before they&rsquo;re compared. And when the
+        evidence is too thin, the app says so rather than printing something confident (no trust me bro here!). 
+      </p>
+
+      <p class="callout">
+        A wrong price that looks certain is worse than no price at all. Most of the engineering here is in service
+        of that one idea.
+      </p>
     </section>
 
     <!-- ============ 2. Product overview ============ -->
@@ -239,13 +277,6 @@
         <h3>Why the assistant calls functions instead of reading documents</h3>
         <p>
           The usual way to hook an LLM up to your data is to chop it into text, find the relevant chunks, and let the model read them (RAG). That works for docs. It doesn't work for &ldquo;what did this exact version sell for on this date,&rdquo; because the answer is a number in a table and any paraphrasing risks getting it slightly wrong, which for pricing is fully wrong. So instead, Claude gets a small set of functions that return the actual rows (search for a card, get its price, list its sales, check a deal), and its only job is to put those results into words. The search engine from above is one of those functions, not the answer itself.
-        </p>
-      </div>
-
-      <div class="decision">
-        <h3>Why I don't trust the model's numbers, even when they're right</h3>
-        <p>
-          Early on the model would round a price, or reuse a figure from an earlier message that was no longer what the tool said. Prompting it harder didn't fix that. So every answer goes through a checker written in normal code: every dollar amount has to match a tool result to the cent, every version name has to be one the tools actually returned, and if the checker isn't satisfied, the model gets one shot at a correction before the app just shows the raw facts with no prose. Not knowing is an allowed answer; making something up is not. On a sealed test of 50 scenarios (drawn once, looked at once), 48 passed with zero made-up numbers, versions or ids getting through. Every paid run is recorded, so re-checking later costs $0. Total spend on the model across the whole project was about $15.50.
         </p>
       </div>
 
